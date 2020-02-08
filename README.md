@@ -14,3 +14,8 @@ data modify storage bfi:in Program set value ['+', '>', ',', '>', ',']
 data modify storage bfi:in Args set value ['1', '2', '3']
 execute as @a run function bfi:read/main
 ```
+
+## Behavior
+This interpreter gives the program an 'infinite' tape to the **right**, which means that too many `<` operations will lead to an error. Because dynamic list operations in Minecraft take a lot of resources, the tape is increased by a constant value if needed.  
+Memory values range from `0`-`255` and can be overflowed: using `-` on a cell with value `0` will overflow to `255`. Vice versa, using `+` on a cell with value `255` will set the value to `0`.  
+Input can be parsed from any unicode character ranging from `32`-`127` and `161`-`255`. Any other characters will be ignored. Similarly, the program can contain any character but only the 8 Brainfuck operations will be parsed.
