@@ -22,4 +22,4 @@ function bfi:read/is_string_list/program
 function bfi:read/is_string_list/args
 
 # If no error was encountered, continue.
-execute if score $bfi.exit_code bfi.var matches 0 unless score #bfi.busy bfi.var matches 1 run schedule function bfi:read/parse/program/main 1t
+execute if score $bfi.exit_code bfi.var matches 0 unless score #bfi.busy bfi.var matches 1 run schedule function bfi:read/parse/program/check_executing_entity 1t
