@@ -17,6 +17,11 @@ execute as @a run function bfi:read/main
 
 To stop the current process, run the `bfi:stop` function. To reset all scores and storage, use the `bfi:reset` function.
 
+## Visualization
+The interpretation process can be visualized using entities. An entity with the `bfi.output` tag will have the output in its `CustomName`. An entity with the `bfi.memory` tag will have the memory array in its `CustomName`. The former can be summoned using the `bfi:summon/output` function, the latter using the `bfi:summon/memory` function.
+
+For an example visualization, see [this video](https://youtu.be/ZRzMbK8oEK8).
+
 ## Behavior
 This datapack first parses the program, then the arguments and then interprets the program. If at any stage an error occurs, the process is stopped. This can be done manually by using the `bfi:stop` function.
 
