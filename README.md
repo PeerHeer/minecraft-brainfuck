@@ -22,6 +22,8 @@ The interpretation process can be visualized using entities. An entity with the 
 
 For an example visualization, see [this video](https://youtu.be/ZRzMbK8oEK8).
 
+To reduce the interpretation speed and make the program easier to visualize, you can reduce the amount of iterations per tick in the config file by decreasing the `#bfi.interpret.count.max bfi.const` score.
+
 ## Behavior
 This datapack first parses the program, then the arguments and then interprets the program. If at any stage an error occurs, the process is stopped. This can be done manually by using the `bfi:stop` function.
 
