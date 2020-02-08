@@ -23,10 +23,9 @@ execute if score #bfi.read.parse.opcode bfi.var matches -1 run scoreboard player
 # Add to error_index.
 scoreboard players add #bfi.read.parse.error_index bfi.var 1
 
-# tellraw @a[tag=bfi.log] ["Opcode: ", {"score":{"name":"#bfi.read.parse.opcode", "objective":"bfi.var"}}]
-# tellraw @a[tag=bfi.log] ["Index: ", {"score":{"name":"#bfi.read.parse.index", "objective":"bfi.var"}}]
-# tellraw @a[tag=bfi.log] ["Stack: ", {"nbt":"root.Program.Stack", "storage":"bfi:internal"}]
+# Add 1 to the current count.
+scoreboard players add #bfi.parse.program.count.current bfi.var 1
 
 # Recursive call as long as index < length.
-execute if score $bfi.exit_code bfi.var matches 0 if score #bfi.read.parse.index bfi.var < #bfi.read.parse.length bfi.var run function bfi:read/parse/program/loop
-
+execute if score #bfi.parse.program.count.current bfi.var = #bfi.parse.program.count.max bfi.const if score $bfi.exit_code bfi.var matches 0 if score #bfi.read.parse.index bfi.var < #bfi.read.parse.length bfi.var run schedule function bfi:read/parse/program/schedule_function 1t
+execute unless score #bfi.parse.program.count.current bfi.var = #bfi.parse.program.count.max bfi.const if score $bfi.exit_code bfi.var matches 0 if score #bfi.read.parse.index bfi.var < #bfi.read.parse.length bfi.var run function bfi:read/parse/program/loop

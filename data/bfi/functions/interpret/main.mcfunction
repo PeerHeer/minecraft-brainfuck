@@ -1,6 +1,7 @@
 # Start interpretation
 
-# Notify user.
+# Notify the user.
+tellraw @a[tag=bfi.log] [{"text":"[NOTE]", "color":"green"}, {"text":" Input parsed successfully!", "color":"white"}]
 tellraw @a[tag=bfi.log] [{"text":"[NOTE]", "color":"green"}, {"text":" Start interpreting...", "color":"white"}]
 
 # Initialize scores
@@ -35,5 +36,5 @@ schedule function bfi:interpret/schedule_function 1t
 # data modify storage bfi:out Memory append from storage bfi:internal root.Interpret.Memory.Current
 # data modify storage bfi:out Memory append from storage bfi:internal root.Interpret.Memory.Right[]
 
-# Notify the user.
+# # Notify the user.
 # tellraw @a[tag=bfi.log] [{"text":"[NOTE]", "color":"green"}, {"text":" Exited with code ", "color":"white"}, {"score":{"name":"$bfi.error", "objective":"bfi.var"}, "color":"yellow"}, {"text":".", "color":"white"}]

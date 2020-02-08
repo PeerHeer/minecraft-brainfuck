@@ -3,6 +3,7 @@
         "bfi:setup/objectives",
         "bfi:setup/forceload",
         "bfi:setup/storage",
-        "bfi:setup/scores"
+        "bfi:setup/scores",
+        "bfi.config:config"
     ]
 }

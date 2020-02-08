@@ -17,13 +17,7 @@ data modify storage bfi:internal root.Program.Main set value []
 # If there are no players to log to, abort.
 execute unless entity @a[tag=bfi.log] run function bfi:error_handler/no_executing_entity
 
-# Start the parsing loop.
-execute if score $bfi.exit_code bfi.var matches 0 run function bfi:read/parse/program/loop
-
-# If stack is not empty, brackets are unbalanced.
-execute if data storage bfi:internal root.Program.Stack[0] run function bfi:error_handler/unbalanced_brackets_right
-
-# If an error occured, stop the process.
+# If error occured, stop.
 execute if score $bfi.exit_code bfi.var matches 1 run function bfi:stop
-# Else, continue.
-execute if score $bfi.exit_code bfi.var matches 0 run function bfi:read/parse/args/main
+# Else, schedule parsing loop for program.
+execute if score $bfi.exit_code bfi.var matches 0 run schedule function bfi:read/parse/program/schedule_function 1t

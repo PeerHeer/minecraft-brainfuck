@@ -16,5 +16,9 @@ execute if score #bfi.parse.args.ascii_val bfi.var matches 0.. run function bfi:
 # Increment index
 scoreboard players add #bfi.read.parse.index bfi.var 1
 
+# Add 1 to the current count.
+scoreboard players add #bfi.parse.args.count.current bfi.var 1
+
 # Recrusive call
-execute if score #bfi.read.parse.index bfi.var < #bfi.read.parse.length bfi.var run function bfi:read/parse/args/loop
+execute if score #bfi.parse.args.count.current bfi.var = #bfi.parse.args.count.max bfi.const if score $bfi.exit_code bfi.var matches 0 if score #bfi.read.parse.index bfi.var < #bfi.read.parse.length bfi.var run schedule function bfi:read/parse/args/schedule_function 1t
+execute unless score #bfi.parse.args.count.current bfi.var = #bfi.parse.args.count.max bfi.const if score $bfi.exit_code bfi.var matches 0 if score #bfi.read.parse.index bfi.var < #bfi.read.parse.length bfi.var run function bfi:read/parse/args/loop

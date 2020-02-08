@@ -12,10 +12,4 @@ execute store result score #bfi.read.parse.length bfi.var run data get storage b
 data modify storage bfi:internal root.Args.Main set value []
 
 # Start loop if input is not empty.
-execute unless score #bfi.read.parse.length bfi.var matches 0 run function bfi:read/parse/args/loop
-
-# Notify the user.
-tellraw @a[tag=bfi.log] [{"text":"[NOTE]", "color":"green"}, {"text":" Input parsed successfully!", "color":"white"}]
-
-# Schedule the interpretation
-schedule function bfi:interpret/main 1t
+execute unless score #bfi.read.parse.length bfi.var matches 0 run schedule function bfi:read/parse/args/schedule_function 1t
