@@ -1,0 +1,6 @@
+{
+	"pack": {
+		"pack_format": 5,
+		"description": "Brainfuck Interpreter for Minecraft 1.15"
+	}
+}

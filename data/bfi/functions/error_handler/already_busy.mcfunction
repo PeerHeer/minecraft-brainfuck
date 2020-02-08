@@ -1,0 +1,2 @@
+# Send a tellraw error message.
+tellraw @a[tag=bfi.log] [{"text":"[Error]", "color":"red"}, {"text":" Interpreter is still busy. Execute the function ", "color":"white"}, {"text":"bfi:stop", "color":"yellow"}, {"text":" to stop the current process.", "color":"white"}]
