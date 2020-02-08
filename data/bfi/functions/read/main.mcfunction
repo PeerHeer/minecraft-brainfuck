@@ -5,14 +5,9 @@
 # Reset error score.
 scoreboard players set $bfi.exit_code bfi.var 0
 
-# Copy input data to internal storage.
-data modify storage bfi:internal root.Input.Program set from storage bfi:in Program
-data modify storage bfi:internal root.Input.Args set from storage bfi:in Args
-
 # Clear output.
 data modify storage bfi:out Memory set value []
 data modify storage bfi:out Output set value []
-data modify block -29999994 0 8007 Text2 set value '""'
 
 # Check if @s exists.
 tag @s[type=player] add bfi.log

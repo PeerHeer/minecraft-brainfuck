@@ -17,6 +17,9 @@ data modify storage bfi:internal root.Interpret.Program.Current set value {}
 data modify storage bfi:internal root.Interpret.Program.Left set value []
 data modify storage bfi:internal root.Interpret.Program.Right set from storage bfi:internal root.Program.Main
 
+# Initialize output
+data modify block -29999994 0 8007 Text2 set value '""'
+
 # Initialize Args
 data modify storage bfi:internal root.Interpret.Args set from storage bfi:internal root.Args.Main
 

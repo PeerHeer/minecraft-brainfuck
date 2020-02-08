@@ -17,6 +17,9 @@ data modify storage bfi:internal root.Program.Main set value []
 # If there are no players to log to, abort.
 execute unless entity @a[tag=bfi.log] run function bfi:error_handler/no_executing_entity
 
+# Copy input program.
+execute if score $bfi.exit_code bfi.var matches 0 run data modify storage bfi:internal root.Input.Program set from storage bfi:in Program
+
 # If error occured, stop.
 execute if score $bfi.exit_code bfi.var matches 1 run function bfi:stop
 # Else, schedule parsing loop for program.
